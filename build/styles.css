@@ -22,6 +22,9 @@ html {
   bottom: 0;
   width: 16.66%;
   opacity: .8; }
+  .stripe.active {
+    z-index: 1;
+    box-shadow: 0 0 4px 4px rgba(1, 1, 1, 0.5); }
   .stripe:hover {
     opacity: 1; }
 

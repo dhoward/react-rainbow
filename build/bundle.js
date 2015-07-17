@@ -26,9 +26,11 @@ module.exports = React.createClass({displayName: "exports",
     stripeWidth = (1 / colors.length) * 100; // width as a percentage
 
     return colors.map( function(color, i){
+      var classes = _this.props.settings.currentColor == color ? "stripe active" : "stripe";
+
       var left = stripeWidth * i;
       var style = { backgroundColor: color.color, width: stripeWidth+'%', left: left+'%' };
-      return React.createElement("div", {key: i, className: "stripe", style: style, onClick: _this.editColor.bind(_this, color)})
+      return React.createElement("a", {key: i, href: "#", className: classes, style: style, onClick: _this.editColor.bind(_this, color)})
      });
   },
 
