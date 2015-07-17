@@ -15,8 +15,12 @@ module.exports = React.createClass({
 
   getInitialState: function() {
     return {
-      currentColor: ''
+      currentColor: {}
     }
+  },
+
+  componentWillReceiveProps: function(props) {
+    this.setState({ currentColor: props.settings.currentColor || {} })
   },
 
   changeColor: function(event) {
@@ -25,23 +29,28 @@ module.exports = React.createClass({
     this.props.settings.editColor(oldColor, newColor);
   },
 
-  componentWillReceiveProps: function(props) {
-    this.setState({ currentColor: props.settings.currentColor })
+  handleDoubleRainbow: function(event) {
+    this.props.settings.setDoubleRainbow(event.target.checked);
   },
 
   render: function() {
     var settings = this.props.settings;
+    var currentColor = this.state.currentColor.color || '';
 
     return (
       <div className="settings-form">
         { settings.editColor ?
             <div>
               <div className="currentColor"></div>
-              <input value={this.state.currentColor.color} onChange={this.changeColor} />
+              <input value={currentColor} onChange={this.changeColor} />
             </div>
           :
             <h2>Click on a section of the rainbow to edit a color</h2>
         }
+        <div>
+          <label>Double rainbow?</label>
+          <input type="checkbox" onChange={this.handleDoubleRainbow} />
+        </div>
       </div>
     )
   }

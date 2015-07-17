@@ -13,8 +13,16 @@ module.exports = React.createClass({
 
   renderStripes: function() {
     var _this = this;
-    var colors = this.props.settings.colors;
-    var stripeWidth = (1 / colors.length) * 100; // width as a percentage
+    var settings = this.props.settings;
+    var colors = settings.colors;
+    var doubleRainbow = this.props.settings.doubleRainbow;
+    var stripeWidth;
+
+    if(doubleRainbow) {
+      colors = colors.concat(colors);
+    }
+
+    stripeWidth = (1 / colors.length) * 100; // width as a percentage
 
     return colors.map( function(color, i){
       var left = stripeWidth * i;
