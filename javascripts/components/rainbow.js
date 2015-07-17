@@ -33,9 +33,11 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="rainbow">
-        { this.renderStripes() }
-        <div className="cloud"></div>
+      <div className="rainbow-holder">
+        <div className="rainbow">
+          { this.renderStripes() }
+          <div className="cloud"></div>
+        </div>
       </div>
     )
   }

@@ -34,9 +34,11 @@ module.exports = React.createClass({displayName: "exports",
 
   render: function() {
     return (
-      React.createElement("div", {className: "rainbow"}, 
-         this.renderStripes(), 
-        React.createElement("div", {className: "cloud"})
+      React.createElement("div", {className: "rainbow-holder"}, 
+        React.createElement("div", {className: "rainbow"}, 
+           this.renderStripes(), 
+          React.createElement("div", {className: "cloud"})
+        )
       )
     )
   }
@@ -65,6 +67,10 @@ module.exports = React.createClass({displayName: "exports",
     }
   },
 
+  componentWillReceiveProps: function(props) {
+    this.setState({ currentColor: props.settings.currentColor || {} })
+  },
+
   changeColor: function(event) {
     var oldColor = this.props.settings.currentColor;
     var newColor = event.target.value;
@@ -72,31 +78,39 @@ module.exports = React.createClass({displayName: "exports",
   },
 
   handleDoubleRainbow: function(event) {
-    console.log('handleDoubleRainbow ' + event.target.checked);
     this.props.settings.setDoubleRainbow(event.target.checked);
-  },
-
-  componentWillReceiveProps: function(props) {
-    this.setState({ currentColor: props.settings.currentColor || {} })
   },
 
   render: function() {
     var settings = this.props.settings;
     var currentColor = this.state.currentColor.color || '';
+    var currentColorStyle = { backgroundColor: currentColor }
 
     return (
-      React.createElement("div", {className: "settings-form"}, 
-         settings.editColor ?
+      React.createElement("div", {className: "settings-form-column"}, 
+        React.createElement("div", {className: "settings-form"}, 
+
+          React.createElement("div", {className: "headline"}, 
+            React.createElement("h1", null, "Welcome to the"), 
+            React.createElement("h1", null, "React Rainbow!")
+          ), 
+
+          React.createElement("section", null, 
+            React.createElement("h3", null, "Click on a section of the rainbow to edit its color here"), 
             React.createElement("div", null, 
-              React.createElement("div", {className: "currentColor"}), 
-              React.createElement("input", {value: currentColor, onChange: this.changeColor})
+              React.createElement("div", {className: "currentColor", style: currentColorStyle}), 
+              React.createElement("input", {type: "text", value: currentColor, onChange: this.changeColor})
             )
-          :
-            React.createElement("h2", null, "Click on a section of the rainbow to edit a color"), 
-        
-        React.createElement("div", null, 
-          React.createElement("label", null, "Double rainbow?"), 
-          React.createElement("input", {type: "checkbox", onChange: this.handleDoubleRainbow})
+          ), 
+
+          React.createElement("section", null, 
+            React.createElement("h3", null, "Double rainbow?"), 
+            React.createElement("div", null, 
+              React.createElement("label", null, "Yes, please"), 
+              React.createElement("input", {type: "checkbox", onChange: this.handleDoubleRainbow})
+            )
+          )
+
         )
       )
     )

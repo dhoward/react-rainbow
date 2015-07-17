@@ -1,5 +1,12 @@
 html {
   background-color: #add8e6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.rainbow-column {
+  float: left;
+  width: 500px;
+  height: 100%;
 }
 
 .rainbow{
@@ -18,10 +25,10 @@ html {
   bottom: 0;
   width: 16.66%;
   opacity: .8;
-}
 
-.stripe:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .cloud {
@@ -33,27 +40,78 @@ html {
   height: 100px;
   width: 200px;
   border-radius: 50%;
+
+  &:before, &:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    bottom: -10px;
+    height: 66px;
+    width: 200px;
+  }
+
+  &:before {
+    right: 40%;
+  }
+
+  &:after {
+    left: 40%;
+  }
 }
 
-.cloud:before, .cloud:after {
-  z-index: -1;
-  content: '';
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  bottom: -10px;
-  height: 66px;
-  width: 200px;
-}
+.settings-form-column {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40px 0 0 500px;
 
-.cloud:before {
-  right: 40%;
-}
+  .settings-form {
+    width: 400px;
+    margin: auto;
+    background-color: #eee;
+    box-shadow: 0 0 10px 1px rgba(1, 1, 1, 0.5);
+    border-radius: 10px;
+    padding: 30px;
 
-.cloud:after {
-  left: 40%;
-}
+    .headline {
+      margin-bottom: 20px;
 
-.settings-form {
-  float: right;
+      h1 {
+        margin: 0 0 0 10px;
+        text-align: center;
+      }
+    }
+
+    section {
+      border-top: 1px solid #333;
+      padding: 20px 0;
+
+      h3 {
+        margin: 0 0 10px 0;
+      }
+    }
+
+    .currentColor {
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin-right: 10px;
+      border: 2px solid black;
+    }
+
+    input[type="text"] {
+      height: 24px;
+      width: 200px;
+      border-radius: 4px;
+      border-width: 1px 1px 1px 1px;
+      box-sizing: border-box;
+      padding: 4px;
+    }
+
+    input[type="checkbox"] {
+      margin-left: 10px;
+    }
+  }
 }

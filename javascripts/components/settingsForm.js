@@ -36,20 +36,33 @@ module.exports = React.createClass({
   render: function() {
     var settings = this.props.settings;
     var currentColor = this.state.currentColor.color || '';
+    var currentColorStyle = { backgroundColor: currentColor }
 
     return (
-      <div className="settings-form">
-        { settings.editColor ?
+      <div className="settings-form-column">
+        <div className="settings-form">
+
+          <div className="headline">
+            <h1>Welcome to the</h1>
+            <h1>React Rainbow!</h1>
+          </div>
+
+          <section>
+            <h3>Click on a section of the rainbow to edit its color here</h3>
             <div>
-              <div className="currentColor"></div>
-              <input value={currentColor} onChange={this.changeColor} />
+              <div className="currentColor" style={currentColorStyle}></div>
+              <input type="text" value={currentColor} onChange={this.changeColor} />
             </div>
-          :
-            <h2>Click on a section of the rainbow to edit a color</h2>
-        }
-        <div>
-          <label>Double rainbow?</label>
-          <input type="checkbox" onChange={this.handleDoubleRainbow} />
+          </section>
+
+          <section>
+            <h3>Double rainbow?</h3>
+            <div>
+              <label>Yes, please</label>
+              <input type="checkbox" onChange={this.handleDoubleRainbow} />
+            </div>
+          </section>
+
         </div>
       </div>
     )
