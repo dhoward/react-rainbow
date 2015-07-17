@@ -1,6 +1,6 @@
 # React Rainbow
 
-React Rainbow is a simple interactivity demo built in React.
+React Rainbow is a simple interactivity demo built in React. You can view it in action at http://react-rainbow.herokuapp.com/, or clone this repo and open the index.html file. It is built entirely of static assets, no server required.
 
 ### Javascript
 
