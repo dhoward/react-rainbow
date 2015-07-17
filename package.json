@@ -1,0 +1,9 @@
+{
+  "name": "react-rainbow",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "0.13.1",
+    "reactify": "*"
+  }
+}

@@ -1,0 +1,59 @@
+html {
+  background-color: #add8e6;
+}
+
+.rainbow{
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100px;
+  width: 300px;
+  animation: float 5s infinite;
+}
+
+.stripe{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16.66%;
+  opacity: .8;
+}
+
+.stripe:hover {
+  opacity: 1;
+}
+
+.cloud {
+  z-index: 2;
+  position: absolute;
+  bottom: -10px;
+  left: 45px;
+  background-color: white;
+  height: 100px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.cloud:before, .cloud:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  bottom: -10px;
+  height: 66px;
+  width: 200px;
+}
+
+.cloud:before {
+  right: 40%;
+}
+
+.cloud:after {
+  left: 40%;
+}
+
+.settings-form {
+  float: right;
+}

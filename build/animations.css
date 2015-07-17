@@ -1,0 +1,9 @@
+@-webkit-keyframes float {
+  0%, 100% { bottom: 50px; }
+  50% { bottom: 100px; }
+}
+
+@-keyframes float {
+  0%, 100% { bottom: 50px; }
+  50% { bottom: 100px; }
+}
