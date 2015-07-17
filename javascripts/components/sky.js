@@ -11,11 +11,8 @@ module.exports = React.createClass({
   },
 
   getDefaultProps: function() {
-    var settings = new Settings();
-    settings.onUpdate = this.handleUpdate;
-
     return {
-      settings: settings
+      settings: new Settings()
     }
   },
 

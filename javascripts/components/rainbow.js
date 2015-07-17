@@ -26,9 +26,9 @@ module.exports = React.createClass({
 
     return colors.map( function(color, i){
       var classes = _this.props.settings.currentColor == color ? "stripe active" : "stripe";
-
       var left = stripeWidth * i;
       var style = { backgroundColor: color.color, width: stripeWidth+'%', left: left+'%' };
+
       return <a key={i} href="#" className={classes} style={style} onClick={_this.editColor.bind(_this, color)}></a>
      });
   },

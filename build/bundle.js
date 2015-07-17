@@ -27,9 +27,9 @@ module.exports = React.createClass({displayName: "exports",
 
     return colors.map( function(color, i){
       var classes = _this.props.settings.currentColor == color ? "stripe active" : "stripe";
-
       var left = stripeWidth * i;
       var style = { backgroundColor: color.color, width: stripeWidth+'%', left: left+'%' };
+
       return React.createElement("a", {key: i, href: "#", className: classes, style: style, onClick: _this.editColor.bind(_this, color)})
      });
   },
@@ -73,7 +73,7 @@ module.exports = React.createClass({displayName: "exports",
     this.setState({ currentColor: props.settings.currentColor || {} })
   },
 
-  changeColor: function(event) {
+  handleColor: function(event) {
     var oldColor = this.props.settings.currentColor;
     var newColor = event.target.value;
     this.props.settings.editColor(oldColor, newColor);
@@ -101,7 +101,7 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("h3", null, "Click on a section of the rainbow to edit its color here"), 
             React.createElement("div", null, 
               React.createElement("div", {className: "currentColor", style: currentColorStyle}), 
-              React.createElement("input", {type: "text", value: currentColor, onChange: this.changeColor})
+              React.createElement("input", {type: "text", value: currentColor, onChange: this.handleColor})
             )
           ), 
 
@@ -134,11 +134,8 @@ module.exports = React.createClass({displayName: "exports",
   },
 
   getDefaultProps: function() {
-    var settings = new Settings();
-    settings.onUpdate = this.handleUpdate;
-
     return {
-      settings: settings
+      settings: new Settings()
     }
   },
 

@@ -23,7 +23,7 @@ module.exports = React.createClass({
     this.setState({ currentColor: props.settings.currentColor || {} })
   },
 
-  changeColor: function(event) {
+  handleColor: function(event) {
     var oldColor = this.props.settings.currentColor;
     var newColor = event.target.value;
     this.props.settings.editColor(oldColor, newColor);
@@ -51,7 +51,7 @@ module.exports = React.createClass({
             <h3>Click on a section of the rainbow to edit its color here</h3>
             <div>
               <div className="currentColor" style={currentColorStyle}></div>
-              <input type="text" value={currentColor} onChange={this.changeColor} />
+              <input type="text" value={currentColor} onChange={this.handleColor} />
             </div>
           </section>
 
